@@ -6,7 +6,9 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Day 1
+            Day1 day1 = new Day1();
+            Console.WriteLine(day1.GetFrequency());
         }
     }
 }
