@@ -19,5 +19,24 @@ namespace AdventOfCode
 
             return frequency;
         }
+
+        public int GetSameFrequency()
+        {
+            List<int> numbers = new List<int>();
+            int number = 0;
+
+            foreach (string change in changes)
+            {
+                bool converted = Int32.TryParse(change, out number);
+                frequency += number;
+                if (numbers.Contains(number))
+                {
+                    return number;
+                }
+                numbers.Add(frequency);
+            }
+            return number;
+        }
+
     }
 }

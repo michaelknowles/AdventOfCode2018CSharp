@@ -9,6 +9,7 @@ namespace AdventOfCode
             // Day 1
             Day1 day1 = new Day1();
             Console.WriteLine(day1.GetFrequency());
+            Console.WriteLine(day1.GetSameFrequency());
         }
     }
 }
