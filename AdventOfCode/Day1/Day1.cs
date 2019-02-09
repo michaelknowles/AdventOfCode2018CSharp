@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AdventOfCode
 {
@@ -11,6 +10,9 @@ namespace AdventOfCode
 
         public int GetFrequency()
         {
+            /*
+             * Add all changes to get the final frequency
+             */
             int frequency = 0;
             foreach(int change in Changes) {
                 frequency += change;
@@ -21,15 +23,19 @@ namespace AdventOfCode
 
         public int GetSameFrequency()
         {
+            /*
+             * Find which frequency occurs twice first
+             * List may be looped multiple times
+             */
             int frequency = 0;
             List<int> frequencies = new List<int>();
 
             bool LoopFrequencies()
             {
-                foreach (int change in Changes)
+                foreach(int change in Changes)
                 {
                     frequency += change;
-                    if (frequencies.Contains(frequency)) return true;
+                    if(frequencies.Contains(frequency)) return true;
                     frequencies.Add(frequency);
                 }
 
@@ -37,7 +43,7 @@ namespace AdventOfCode
             }
 
             bool same = false;
-            while (!same)
+            while(!same)
             {
                 same = LoopFrequencies();
             }
