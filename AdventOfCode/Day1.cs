@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AdventOfCode
 {
     class Day1
     {
-        private int frequency = 0;
-        private readonly string[] changes = System.IO.File.ReadAllLines("Day1-Input.txt");
+        private List<int> Changes { get; }
+
+        public Day1(List<int> changes) => Changes = changes;
 
         public int GetFrequency()
         {
-            foreach(string change in changes) {
-                int number;
-                bool converted = Int32.TryParse(change, out number);
-                frequency += number;
+            int frequency = 0;
+            foreach(int change in Changes) {
+                frequency += change;
             }
 
             return frequency;
@@ -22,20 +21,28 @@ namespace AdventOfCode
 
         public int GetSameFrequency()
         {
-            List<int> numbers = new List<int>();
-            int number = 0;
+            int frequency = 0;
+            List<int> frequencies = new List<int>();
 
-            foreach (string change in changes)
+            bool LoopFrequencies()
             {
-                bool converted = Int32.TryParse(change, out number);
-                frequency += number;
-                if (numbers.Contains(number))
+                foreach (int change in Changes)
                 {
-                    return number;
+                    frequency += change;
+                    if (frequencies.Contains(frequency)) return true;
+                    frequencies.Add(frequency);
                 }
-                numbers.Add(frequency);
+
+                return false;
             }
-            return number;
+
+            bool same = false;
+            while (!same)
+            {
+                same = LoopFrequencies();
+            }
+
+            return frequency;
         }
 
     }
