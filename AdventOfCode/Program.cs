@@ -8,36 +8,17 @@ namespace AdventOfCode
         static void Main(string[] args)
         {
             // Day 1
-            Console.WriteLine("Day 1");
-            var changeStrings = readInput("Day1/Day1-Input.txt");
-            List<int> changes = new List<int>();
-            foreach (var t in changeStrings)
-            {
-                Int32.TryParse(t, out var change);
-                changes.Add(change);
-            }
-            Day1 day1 = new Day1(changes);
-            Console.WriteLine("Part 1:");
-            Console.WriteLine(day1.GetFrequency());
-            Console.WriteLine("Part 2:");
-            Console.WriteLine(day1.GetSameFrequency());
+            var changeStrings = ReadInput("Day1/Day1-Input.txt");
+            Day1 day1 = new Day1(changeStrings);
+            day1.Output();
             
             // Day 2
-            Console.WriteLine("Day 2");
-            var boxIDStrings = readInput("Day2/Day2-Input.txt");
+            var boxIDStrings = ReadInput("Day2/Day2-Input.txt");
             Day2 day2 = new Day2(boxIDStrings);
-            day2.Checksum();
-            Console.WriteLine("Part 1:");
-            Console.WriteLine(day2.Checksum());
-            Console.WriteLine("Part 2:");
-            var letters = day2.CommonLetters();
-            foreach (var letter in letters)
-            {
-                Console.Write(letter);
-            }
+            day2.Output();
         }
 
-        static IEnumerable<string> readInput(string fileName)
+        static IEnumerable<string> ReadInput(string fileName)
         {
             return System.IO.File.ReadAllLines(fileName);
         }

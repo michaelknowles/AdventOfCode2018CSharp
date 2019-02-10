@@ -11,6 +11,20 @@ namespace AdventOfCode
 
         public Day2(IEnumerable<string> boxIDs) => BoxIDs = boxIDs;
 
+        public void Output()
+        {
+            Console.WriteLine("Day 2");
+            Checksum();
+            Console.WriteLine("Part 1:");
+            Console.WriteLine(Checksum());
+            Console.WriteLine("Part 2:");
+            var letters = CommonLetters();
+            foreach (var letter in letters)
+            {
+                Console.Write(letter);
+            }
+        }
+
         public int Checksum()
         {
             /*

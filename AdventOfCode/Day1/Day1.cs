@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AdventOfCode
 {
@@ -6,7 +7,25 @@ namespace AdventOfCode
     {
         private IEnumerable<int> Changes { get; }
 
-        public Day1(IEnumerable<int> changes) => Changes = changes;
+        public Day1(IEnumerable<string> changeStrings)
+        {
+            List<int> changes = new List<int>();
+            foreach (var t in changeStrings)
+            {
+                Int32.TryParse(t, out var change);
+                changes.Add(change);
+            }
+            Changes = changes;
+        }
+
+        public void Output()
+        {
+            Console.WriteLine("Day 1");
+            Console.WriteLine("Part 1:");
+            Console.WriteLine(GetFrequency());
+            Console.WriteLine("Part 2:");
+            Console.WriteLine(GetSameFrequency());
+        }
 
         public int GetFrequency()
         {
