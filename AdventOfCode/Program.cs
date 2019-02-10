@@ -9,7 +9,7 @@ namespace AdventOfCode
         {
             // Day 1
             Console.WriteLine("Day 1");
-            var changeStrings = readInput("Day1-Input.txt");
+            var changeStrings = readInput("Day1/Day1-Input.txt");
             List<int> changes = new List<int>();
             foreach (var t in changeStrings)
             {
@@ -24,7 +24,9 @@ namespace AdventOfCode
             
             // Day 2
             Console.WriteLine("Day 2");
-            var boxIDStrings = readInput("Day2-Input.txt");
+            var boxIDStrings = readInput("Day2/Day2-Input.txt");
+            Day2 day2 = new Day2(boxIDStrings);
+            Console.WriteLine(day2.Checksum());
         }
 
         static IEnumerable<string> readInput(string fileName)

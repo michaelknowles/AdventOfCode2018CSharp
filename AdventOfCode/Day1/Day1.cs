@@ -4,9 +4,9 @@ namespace AdventOfCode
 {
     class Day1
     {
-        private List<int> Changes { get; }
+        private IEnumerable<int> Changes { get; }
 
-        public Day1(List<int> changes) => Changes = changes;
+        public Day1(IEnumerable<int> changes) => Changes = changes;
 
         public int GetFrequency()
         {
