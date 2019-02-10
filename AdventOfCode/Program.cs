@@ -26,6 +26,7 @@ namespace AdventOfCode
             Console.WriteLine("Day 2");
             var boxIDStrings = readInput("Day2/Day2-Input.txt");
             Day2 day2 = new Day2(boxIDStrings);
+            day2.Checksum();
             Console.WriteLine(day2.Checksum());
         }
 

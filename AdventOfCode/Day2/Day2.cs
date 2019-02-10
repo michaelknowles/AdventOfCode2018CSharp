@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace AdventOfCode
@@ -18,20 +20,14 @@ namespace AdventOfCode
              */
             int count2 = 0;
             int count3 = 0;
-            Regex match2 = new Regex(@"([a-z]{1}).*?\1", RegexOptions.IgnoreCase);
-            Regex match3 = new Regex(@"([a-z]{1}).*?\1.*?\1", RegexOptions.IgnoreCase);
             
-            foreach (var boxID in BoxIDs)
+            foreach(var boxID in BoxIDs)
             {
-                if (match3.IsMatch(boxID))
-                {
-                    count3++;
-                } else if (match2.IsMatch(boxID))
-                {
-                    count2++;
-                }
+                var d = boxID.GroupBy(x => x).ToDictionary(x => x, x => x.Count());
+                if (d.ContainsValue(3)) count3++;
+                if (d.ContainsValue(2)) count2++;
             }
-
+            
             return count2 * count3;
         }
     }
