@@ -30,5 +30,34 @@ namespace AdventOfCode
             
             return count2 * count3;
         }
+
+        public List<char> CommonLetters()
+        {
+            List<char> commonLetters = new List<char>();
+            int len = 0; // length of word
+            
+            var l = BoxIDs.ToList();
+            l.Sort();
+
+            for (int i = 0; i < l.Count; i++)
+            {
+                len = l[i].Length;
+                
+                for (int j = 0; j < len; j++)
+                {
+                    if (l[i + 1][j] == l[i][j])
+                    {
+                        commonLetters.Add(l[i][j]);
+                    }
+                }
+
+                if ((commonLetters.Count) == len - 1)
+                {
+                    break;
+                } else commonLetters.Clear();
+            }
+
+            return commonLetters;
+        }
     }
 }

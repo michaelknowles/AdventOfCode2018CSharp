@@ -27,7 +27,14 @@ namespace AdventOfCode
             var boxIDStrings = readInput("Day2/Day2-Input.txt");
             Day2 day2 = new Day2(boxIDStrings);
             day2.Checksum();
+            Console.WriteLine("Part 1:");
             Console.WriteLine(day2.Checksum());
+            Console.WriteLine("Part 2:");
+            var letters = day2.CommonLetters();
+            foreach (var letter in letters)
+            {
+                Console.Write(letter);
+            }
         }
 
         static IEnumerable<string> readInput(string fileName)
