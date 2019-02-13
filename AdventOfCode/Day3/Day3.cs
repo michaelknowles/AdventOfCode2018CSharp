@@ -11,11 +11,11 @@ namespace AdventOfCode
         struct Claim
         {
             // #123 @ 3,2: 5x4
-            public int Id;
-            public int LeftSpace;
-            public int TopSpace;
-            public int Width;
-            public int Height;
+            public readonly int Id;
+            public readonly int LeftSpace;
+            public readonly int TopSpace;
+            public readonly int Width;
+            public readonly int Height;
 
             public Claim(string input)
             {
@@ -36,11 +36,13 @@ namespace AdventOfCode
 
         public Day3(IEnumerable<string> input)
         {
+            // build Claims from input
             foreach (var i in input)
             {
                 _claims.Add(new Claim(i));
             }
             
+            // prefill blank grid for debugging
             for (int w = 0; w < 1000; w++)
             {
                 for (int h = 0; h < 1000; h++)
@@ -49,6 +51,7 @@ namespace AdventOfCode
                 }
             }
             
+            // fill grid with claims, marking overlap
             foreach (var claim in _claims)
             {
                 for (int w = 0; w < claim.Width; w++)
@@ -74,7 +77,10 @@ namespace AdventOfCode
         public void Output()
         {
             Console.WriteLine("Day 3");
+            Console.WriteLine("Part 1:");
             Console.WriteLine(Overlap());
+            Console.WriteLine("Part 2:");
+            Console.Write(NoOverlap());
         }
 
         private int Overlap()
@@ -90,6 +96,30 @@ namespace AdventOfCode
             }
 
             return count;
+        }
+
+        private int NoOverlap()
+        {
+            int id = 0;
+            
+            foreach (var claim in _claims)
+            {
+                for (int w = 0; w < claim.Width; w++)
+                {
+                    for (int h = 0; h < claim.Height; h++)
+                    {
+                        if (grid[claim.LeftSpace + w, claim.TopSpace + h] == 'd')
+                        {
+                            goto NextClaim;
+                        }
+                    }
+                }
+
+                id = claim.Id;
+                NextClaim: ;
+            }
+
+            return id;
         }
     }
 }
