@@ -75,14 +75,6 @@ namespace AdventOfCode
         {
             Console.WriteLine("Day 3");
             Console.WriteLine(Overlap());
-            for (int w = 0; w < 20; w++)
-            {
-                for (int h = 0; h < 20; h++)
-                {
-                    Console.Write(grid[w, h]);
-                }
-                Console.Write("\n");
-            }
         }
 
         private int Overlap()

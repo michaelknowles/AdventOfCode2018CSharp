@@ -19,8 +19,7 @@ namespace AdventOfCode
 //            day2.Output();
             
             // Day 3
-//            var claimStrings = ReadInput("Day3/Day3-Input.txt");
-            IEnumerable<string> claimStrings = new List<string>(){"#1 @ 1,3: 4x4", "#2 @ 3,1: 4x4", "#3 @5,5: 2x2"};
+            var claimStrings = ReadInput("Day3/Day3-Input.txt");
             Day3 day3 = new Day3(claimStrings);
             day3.Output();
         }
