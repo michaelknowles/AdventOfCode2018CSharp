@@ -23,6 +23,7 @@ namespace AdventOfCode
             {
                 Console.Write(letter);
             }
+            Console.Write("\n");
         }
 
         public int Checksum()
