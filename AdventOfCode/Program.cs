@@ -19,9 +19,13 @@ namespace AdventOfCode
 //            day2.Output();
             
             // Day 3
-            var claimStrings = ReadInput("Day3/Day3-Input.txt");
-            Day3 day3 = new Day3(claimStrings);
-            day3.Output();
+//            var claimStrings = ReadInput("Day3/Day3-Input.txt");
+//            Day3 day3 = new Day3(claimStrings);
+//            day3.Output();
+            
+            // Day 4
+            var guardStrings = ReadInput("Day4/Day4-Input.txt");
+            Day4 day4 = new Day4(guardStrings);
         }
 
         static IEnumerable<string> ReadInput(string fileName)
